@@ -23,4 +23,7 @@ jobs:
           npx playwright install chromium
 
       - name: Run inside virtual display
-        run: xvfb-run --auto-servernum --server-args
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" node clicker.js
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          SCRAPEPROXY_PROXIES: ${{ secrets.SCRAPEPROXY_PROXIES }}
